@@ -1,0 +1,983 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JavaScript DOM and BOM Template</title>
+        <link href="dombom.css" rel="stylesheet" type="text/css" />
+        <script>
+            function changeImage(){
+                var element=document.getElementById('myimage');
+                if (element.src.match("bulbon")){
+                    element.src="res/pic_bulboff.gif";
+                }
+                else{
+                    element.src="res/pic_bulbon.gif";
+                }
+            }
+            function changeTitleStyle(){
+                var element = document.getElementById("title");
+                var x = document.getElementById("text1").value;
+                element.style.color = x;
+            }
+            function detect1(){
+                var x = document.getElementById("text1").value;
+                if(isNaN(x)||x.replace(/(^\s*)|(\s*$)/g,"")==""){
+                    alert(x+" 不是数字");
+                    console.log(x," 不是数字");
+                }
+            }
+            function turnblue(){
+                var e = document.getElementById('notes')
+                e.style.color="#0000ff";
+            }
+            function turnblack(){
+                var e = document.getElementById('notes')
+                e.style.color="#000000";
+            }
+            var counts_for_red=0;
+            function turnred(){
+                counts_for_red++;
+                var e = document.getElementById('changecss')
+                if(counts_for_red%2==1){
+                    e.style.color="#ff0000";
+                }else{
+                    e.style.color="#000000";
+                }
+            }
+            function downshow(){
+                alert("Surprise~~~~");
+            }
+            function validateForm() {
+                var x = document.forms["myForm"]["fname"].value;
+                if (x == null || x == "") {
+                    alert("需要输入名字。");
+                    return false;
+                }
+            }
+            function validateNumber() {
+                var inpObj = document.getElementById("id1");
+                if (inpObj.checkValidity() == false) {
+                    document.getElementById("de").innerHTML = inpObj.validationMessage;
+                } else {
+                    document.getElementById("de").innerHTML = "Valid Input~~";
+                }
+            }
+            function jsonParse(){
+                var text = '{ "sites" : [' +
+                '{ "name":"Runoob" , "url":"www.runoob.com" },' +
+                '{ "name":"Google" , "url":"www.google.com" },' +
+                '{ "name":"Taobao" , "url":"www.taobao.com" } ]}';
+                var jsonObj = JSON.parse(text);
+                document.getElementById("p_json").innerHTML = jsonObj.sites[1].name + " " + jsonObj.sites[1].url;
+            }
+            function getbyid(){
+                var input = document.getElementById("text_getbyid").value;
+                var output = document.getElementById("p_getbyid");
+                // alert(document.getElementById(input));//
+                output.innerHTML = document.getElementById(input);
+            }
+            function getbytagname(){
+                var input = document.getElementById("text_getbytagname").value;
+                var output = document.getElementById("p_getbytagname");
+                // alert(document.getElementsByTagName(input));
+                output.innerHTML = document.getElementsByTagName(input);
+            }
+            function getbyclassname(){
+                var input = document.getElementById("text_getbyclassname").value;
+                var output = document.getElementById("p_getbyclassname");
+                // alert(document.getElementsByClassName(input));
+                output.innerHTML = document.getElementsByClassName(input);
+            }
+            var counts=0;
+            function changePic1900(){
+                counts++;
+                switch(counts%6){
+                    case 0: document.getElementById("imageLeon").src="res/19001.jpg";break;
+                    case 1: document.getElementById("imageLeon").src="res/19002.jpg";break;
+                    case 2: document.getElementById("imageLeon").src="res/19003.jpg";break;
+                    case 3: document.getElementById("imageLeon").src="res/19004.jpg";break;
+                    case 4: document.getElementById("imageLeon").src="res/19005.jpg";break;
+                    case 5: document.getElementById("imageLeon").src="res/MriShanzhai.jpg";break;
+                }
+            }
+            function checkCookies(){
+                if (navigator.cookieEnabled==true){
+                    alert("Cookies 可用");
+                }
+                else{
+                    alert("Cookies 不可用");
+                }
+            }
+            function bye(){
+                alert("Bye~~~");//not shown when quit...
+            }
+            function toUpper(){
+                var x=document.getElementById("fname");
+                x.value=x.value.toUpperCase();
+            }
+            function mOver(obj){
+                obj.innerHTML="Mouse Out Me pls";
+            }
+            function mOut(obj){
+                obj.innerHTML="Mouse Over Me pls";
+            }
+            function mDown(obj){
+                obj.innerHTML="Mouse Clicked DOWN";
+            }
+            function mUp(obj){
+                obj.innerHTML="Mouse Clicked UP(RELEASE)";
+            }
+            function addEL(){
+                var event_input = document.getElementById("event").value;
+                var action_input = document.getElementById("actionfunction").value;
+                document.getElementById("p").addEventListener(event_input, eval("function(){document.getElementById('p').style.color='#00ff00';}"),true);// eval not work..
+            }
+            function addWA(){
+                window.addEventListener("resize", function(){
+                    document.getElementById("p").innerHTML = "you've changed window size.";
+                });
+            }
+            
+           
+
+
+            function setCookie(cname,cvalue,exdays){
+                var d = new Date();
+                d.setTime(d.getTime()+(exdays*24*60*60*1000));
+                var expires = "expires="+d.toGMTString();
+                document.cookie = cname+"="+cvalue+"; "+expires;
+            }
+            function getCookie(cname){
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0; i<ca.length; i++) {
+                    var c = ca[i].trim();
+                    if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+                }
+                return "";
+            }
+
+
+
+            function checkCookie(){
+                var user=getCookie("username");
+                if (user!=""){
+                    alert("欢迎 " + user + " 再次访问");
+                }
+                else {
+                    user = prompt("请输入你的名字:","");
+                    if (user!="" && user!=null){
+                        setCookie("username",user,30);
+                    }
+                }
+            }
+
+            function clearcookie(){
+                document.cookie = "username=John Doe; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+
+            function windowMove(){
+                var left = document.getElementById("moveToLeft").value;
+                var top = document.getElementById("moveToTop").value;
+                // alert(left+" "+top);
+                window.moveTo(left,top);
+            }
+
+            function windowResize(){
+                var left = document.getElementById("windowWidth").value;
+                var top = document.getElementById("windowHeighth").value;
+                window.resizeTo(left,top);//resizeBy
+            }
+
+            function windowOpen(){
+                var url = document.getElementById("windowUrl").value;
+                if (!url)
+                    window.open("outdex.html");
+                else 
+                    window.open("http://"+url+"/");
+            }
+
+            function windowOpenClose(){
+                var url = document.getElementById("windowUrl").value;
+                if (!url)
+                    var newin = window.open("outdex.html");
+                else 
+                    var newin = window.open("http://"+url+"/");
+                setTimeout(function(){newin.close();}, 3000);//function(){newin.close();}
+            }
+
+            function alErt(){
+                alert("warning!");
+            }
+
+            function conFirm(){
+                var x;
+                var r=window.confirm("按下按钮!");
+                if (r==true){
+                    x="你按下了\"确定\"按钮!";
+                }
+                else{
+                    x="你按下了\"取消\"按钮!";
+                }
+                document.getElementById("cf").innerHTML=x;
+                document.getElementById("cf").style="font-size:12px";
+            }
+
+            function proMpt(){
+                var x;
+                var person=prompt("今天天气真好\n请输入你的名字","Stephen Curry");
+                if (person!=null && person!=""){
+                    x="你好 " + person + "! 今天感觉如何?";
+                    document.getElementById("pm").innerHTML=x;
+                }
+                document.getElementById("pm").style="font-size:12px";
+            }
+
+            function fullScreen(){
+                window.resizeTo(screen.availWidth, screen.availHeight);
+            }
+
+            function refresh(){
+                location.assign("outdex.html");
+            }
+            
+            function back(){
+                history.back();
+            }
+
+            function forward(){
+                history.forward();
+            }
+
+            var counts_for_appchd=0;
+            var counts_for_insbef=0;
+
+            function appChd(){
+                counts_for_appchd++;
+                if(counts_for_appchd%2==1){
+                    var para = document.createElement("p");
+                    var node = document.createTextNode("这是一个新的子段落Child。");
+                    para.appendChild(node);
+                    
+                    var element = document.getElementById("addEle");
+                    element.appendChild(para);
+                    document.getElementById("b1").innerHTML="removeChild";
+                }else{
+                    var parent = document.getElementById("addEle");
+                    var child = parent.childNodes[parent.childNodes.length-1];
+                    parent.removeChild(child);
+                    document.getElementById("b1").innerHTML="appendChild";
+                }
+            }
+            function insBef(){
+                counts_for_insbef++;
+                if(counts_for_insbef%2==1){
+                    var para = document.createElement("p");
+                    var node = document.createTextNode("这是一个 新的子段落Before。");
+                    para.appendChild(node);
+
+                    var element = document.getElementById("addEle");
+                    var child = document.getElementById("b1");
+                    element.insertBefore(para, child);
+                    document.getElementById("b2").innerHTML="removeChild";
+                }else{
+                    var parent = document.getElementById("addEle");
+                    var child = parent.childNodes[1];
+                    parent.removeChild(child);
+                    document.getElementById("b2").innerHTML="insertBefore";
+                }   
+            }
+            function rpcChd(){
+                var para = document.createElement("p");
+                var node = document.createTextNode("我Replace我自己！！");
+                para.appendChild(node);
+
+                var parent = document.getElementById("addEle");
+                var child = document.getElementById("b3");
+                parent.replaceChild(para, child);
+            }
+            
+            function shoWords(){
+                document.getElementById("myDiv").innerHTML= "It's an div Element.";
+            }
+
+            function loadScript(url){
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = url;
+                document.head.appendChild(script);
+            }
+            function loadTheScript(){
+                var url = document.getElementById("scriptUrl").value;
+                if(!url){
+                    var script = document.createElement("script"); 
+                    script.type = "text/javascript";
+                    script.text = "function sayHi(){alert('hi');}"; 
+                    document.head.appendChild(script);
+                }else{
+                    loadScript(url);
+                }
+                document.getElementById("resultOfLoadScript").innerHTML=url+" to load";
+            }
+
+            function loadCSS(url){
+                var link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.href = url;
+                var head = document.getElementsByTagName("head")[0];
+                head.appendChild(link);
+            }
+            function loadTheCSS(){
+                var url = document.getElementById("cssUrl").value;
+                if(!url){
+                    var style = document.createElement("style");
+                    style.type = "text/css"; 
+                    style.appendChild(document.createTextNode("body{background-color:blue}")); 
+                    var head = document.getElementsByTagName("head")[0]; 
+                    head.appendChild(style);
+                }else{
+                    loadCSS(url);
+                }
+            }
+
+            function createATable(){
+                //创建 table
+                var table = document.createElement("table"); 
+                table.border = 1;
+                table.width = "100%";
+                //创建 tbody
+                var tbody = document.createElement("tbody");
+                table.appendChild(tbody); 
+                //创建第一行
+                tbody.insertRow(0);
+                tbody.rows[0].insertCell(0); 
+                tbody.rows[0].cells[0].appendChild(document.createTextNode("Cell 1,1")); 
+                tbody.rows[0].insertCell(1); 
+                tbody.rows[0].cells[1].appendChild(document.createTextNode("Cell 2,1"));
+                //创建第二行
+                tbody.insertRow(1);
+                tbody.rows[1].insertCell(0); 
+                tbody.rows[1].cells[0].appendChild(document.createTextNode("Cell 1,2")); 
+                tbody.rows[1].insertCell(1); 
+                tbody.rows[1].cells[1].appendChild(document.createTextNode("Cell 2,2"));
+
+                document.getElementById("copyTable").appendChild(table);
+            }
+
+        </script>
+    </head>
+
+
+    <!-- http://www.runoob.com/js/js-htmldom.html -->
+
+
+
+    <body onunload="bye()"> <!-- onload="checkCookie()" -->
+    <div>
+
+        <h1 id="title" class="title">BOM and DOM Template</h1>
+
+        <button type="button" onclick="back()" >《《《</button>
+        <button type="button" onclick="forward()" >》》》</button><br>
+        时间：<p id="timeshow">Sun Jan 01 2019 00:00:00 GMT+0800 (China Standard Time)</p>
+        <script>
+            var time = 40-(new Date()).toString().slice(8,10);
+            document.write("距离开学还有<span class=\"keysentence\"> " + time+ " </span> 天。");
+        </script>
+        <script>
+            setInterval(function(){
+                document.getElementById("timeshow").innerHTML=Date();
+            },1000);
+            document.getElementById("timeshow").style="color:green;font-weight:bold";
+        </script>
+
+        <hr /><hr />
+
+        <h2>BOM</h2>
+
+        <span class="keysentence"> 以下将演示BOM中的一些内容。</span>
+
+        <hr/>
+        <span class="keyword"> 
+        1 window::对象窗口大小、位置；新打开窗口；</span> <br>
+        浏览器的一个实例。
+        <hr/>
+
+        <p id="windowPosition"></p>
+        <input type="text" id="moveToLeft">
+        <input type="text" id="moveToTop">
+        <button type="button" onclick="windowMove()" >Move window</button>（一般会被浏览器禁用。）
+        <p id="windowSize"></p>
+        <input type="text" id="windowWidth">
+        <input type="text" id="windowHeighth">
+        <button type="button" onclick="windowResize()" >Resize window</button>（一般会被浏览器禁用。）
+        <script>
+            document.getElementById("windowSize").innerHTML="Window size: "+ window.innerHeight +", "+ window.innerWidth
+            +"(inner) and "+ window.outerHeight +", "+ window.outerWidth+"(outer)";
+            var leftPos = (typeof window.screenLeft == "number") ?
+                    window.screenLeft : window.screenX;
+            var topPos = (typeof window.screenTop == "number") ?
+                            window.screenTop : window.screenY;
+            document.getElementById("windowPosition").innerHTML="Window position: (left: "+leftPos+", "+"top: "+topPos+")."+
+            "（一个比较有意思的事情是：如果把窗口放在扩展外接显示屏，则会出现负数。）";
+        </script>
+        <p>
+            <input type="text" id="windowUrl">
+            <button type="button" onclick="windowOpen()">Open new page</button>
+            <button type="button" onclick=window.close() >Close this page</button>
+            <button type="button" onclick="windowOpenClose()" >Open and Close new page</button> 
+            <span class="keyword">延时</span>3s关闭
+        </p>
+
+        <hr>
+        <span class="keyword"> 
+        2 window对象::对话框</span>
+        <hr>
+
+        系统对话框有5种类型：alert / confirm / prompt / find / print（<span class="atn"> 对话框不含HTML、CSS 或 JavaScript）</span>:
+        <p>
+            警示框（一般显示错误、警告，只有一个ok按钮；只能显示文本）
+            <button type="button" onclick="alErt()" >alert</button>
+            <p id="ae"></p>
+            确认框（既有ok，也有cancel按钮；可以获得true or false值）
+            <button type="button" onclick="conFirm()" >confirm</button>
+            <p id="cf"></p>
+            提示框（既有ok，也有cancel按钮；可以获得提示框输入内容）
+            <button type="button" onclick="proMpt()" >prompt</button>
+            <p id="pm"></p>
+            <button type="button" onclick=window.find()> find </button>
+            <button type="button" onclick=window.print()> print </button>
+        </p>
+
+        <hr />
+        <span class="keyword"> 
+        3 location对象:: </span> <br>
+        提供了与当前窗口中加载的文档有关的信息。
+        <hr />
+
+        <p>
+            属性： host、hostname、href、pathname、port、protocol、serch。 <br>
+            功能： 查询字符串、位置操作。 <br>
+            location.replace().
+        </p>
+        <p>
+            <p id="locationinfo"></p>
+            <button type="button" onclick="refresh()" >Refresh this page</button>
+        </p>
+        <script>
+            document.getElementById("locationinfo").innerHTML="hostname: "+location.hostname+",&nbsp pathname:"+location.pathname+",&nbsp port:"+location.port+",&nbsp protocal:"+location.protocol;
+        </script>
+
+        <hr /> <span class="keyword"> 
+        4 navigator对象:: </span> <br>
+        成为识别客户端浏览器的事实标准。
+        <hr />
+
+        <p id="pluginshow"></p>
+        <script>
+            var str = "Plugins: <br>";
+            for (var i = 0; i < navigator.plugins.length; i++){
+                str = str +"<br>"+ i + " name: "+
+                navigator. plugins [i].name.toLowerCase();
+                document.getElementById("pluginshow").innerHTML=str;
+            }
+        </script>
+        Navigator Infomation：
+        <p>
+            <strong>浏览器检测</strong>：
+            由于 navigator 可误导浏览器检测，使用对象检测可用来嗅探不同的浏览器。
+            由于不同的浏览器支持不同的对象，您可以使用对象来检测浏览器。例如，由于只有 Opera 支持属性 "window.opera"，您可以据此识别出 Opera。
+            例子：if (window.opera) {...some action...} <br>
+            <span id="navigatorinfo"></span>
+        </p>
+        <script>
+            txt = "浏览器代号: " + navigator.appCodeName + "<br>";
+            txt+= "浏览器名称: " + navigator.appName + "<br>";
+            txt+= "浏览器版本: " + navigator.appVersion + "<br>";
+            txt+= "启用Cookies: " + navigator.cookieEnabled + "<br>";
+            txt+= "硬件平台: " + navigator.platform + "<br>";
+            txt+= "用户代理: " + navigator.userAgent + "<br>";
+            txt+= "用户代理语言: " + navigator.systemLanguage + "<br>";
+            document.getElementById("navigatorinfo").innerHTML=txt;
+        </script>
+
+        <hr /> <span class="keyword"> 
+        5 screen对象 :: </span> <br>
+        在编程中用处不大。
+        <hr />
+
+        <p id="screeinfo"></p>
+        <button type="button" onclick="fullScreen()"> fullScreen </button> （一般会被浏览器禁用。）
+
+        <script>
+            document.getElementById("screeinfo").innerHTML="Screen Available: "+screen.availHeight+", "+screen.availWidth;
+        </script>
+
+        <hr /> <span class="keyword"> 
+        6 history对象 :: </span> <br>
+        历史记录。
+        <hr />
+
+        <button type="button" onclick="back()" >《《《</button>
+        <button type="button" onclick="forward()" >》》》</button><br>
+
+        <hr /><hr />
+
+        <h2>DOM</h2>
+
+        <span class="keysentence"> 以下将演示DOM中的一些(部分)内容。</span> <br>
+        JavaScript 能够改变页面中的所有 HTML 元素（包括动态添加script标签）<br>
+        JavaScript 能够改变页面中的所有 HTML 属性及内容 <br>
+        JavaScript 能够改变页面中的所有 CSS 样式 <br>
+        JavaScript 能够对页面中的所有事件做出反应 
+
+        <hr /> <span class="keyword"> 
+        1 Node :: </span> <br>
+        节点类型。
+        <hr />
+        
+        <p id="rootElement" name="rootElement">
+            <p id="father">-father
+                <p id="son1">-=son1
+                    <p id="grandson1">
+                        -==grandson1
+                    </p>
+                    <p id="grandson2">
+                        -==grandson2
+                    </p>
+                    <p id="grandson3">
+                        -==grandson3
+                    </p>
+                </p>
+                <p id="son2">
+                    -=son2
+                </p>
+                <p id="son3">
+                    -=son3
+                </p>
+            </p>
+            <p id="uncle1">-uncle1
+
+            </p>
+            <p id="uncle2">-uncle2
+                
+            </p>
+        </p>
+        <p id="nodeShow"></p>
+        <script>
+            var ancestor = document.getElementById("rootElement").firstChild;
+            var info = "";
+            info = info +"nodeName = "+ ancestor.nodeName + ", nodeValue = "+ ancestor.nodeValue;
+            document.getElementById("nodeShow").innerHTML=info;
+        </script>
+        <p id="addEle">
+            以下三个按钮展示了在JS中创建元素、在HTML中添加、删除、替换、添加Text节点的技术：<br>
+            <button type="button" onclick="appChd()" id="b1">appendChild</button>
+            <button type="button" onclick="insBef()" id="b2">insertBefore</button>
+            <button type="button" onclick="rpcChd()" id="b3">replaceChild</button>
+        </p>
+        <p>
+            在本网页中一共有<strong id="n"></strong>个p标签，他们是:<em id="m">~</em>
+            
+        </p>
+        <script>
+            var allP = document.getElementsByTagName("p");
+            document.getElementById("n").innerHTML=allP.length;
+            document.getElementById("m").innerHTML=allP;
+        </script>
+
+        <hr /> <span class="keyword"> 
+        2 Document类型 :: </span> <br>
+        JavaScript 通过 Document 类型表示文档。
+        <hr />
+
+        <p>
+        属性包含： <br>
+        document.documentElement、firstChild 和 childNodes[0]  ： html <br>
+        document.body ： body <br>
+        document.doctype ： 引用!DOCTYPE标签 <br>
+        document.title ： title <br>
+        document.URL、document.domain、document.referrerbr <br>
+        </p>
+        <p>
+            元素查找: <br>
+            1. <span id="documentFindShow"></span> <br>
+        </p>
+        <script>
+            var paragraphs = document.getElementsByTagName("p");
+            var rootEle = paragraphs["rootElement"];//namedItem()
+            var secondeEle = paragraphs[2];
+            document.getElementById("documentFindShow").innerHTML=rootEle.toString()+
+            "，"+secondeEle.toString();
+        </script>
+        <p>
+            特殊集合：<br>
+            document.forms: <span id="formShow"> </span> <br>
+            document.images: <span id="imageShow"> </span> <br>
+            document.links: <span id="linkShow"> </span> <br>
+        </p>
+        <script>
+            document.getElementById("formShow").innerText=document.forms;
+            document.getElementById("imageShow").innerText=document.images;
+            document.getElementById("linkShow").innerText=document.links;
+        </script>
+        <p>
+            浏览器DOM实现检测：<br>
+            Core XML HTML Views StyleSheets : <span id="firstFive"> </span> <br>
+            CSS CSS2 Events UIEvents MouseEvents : <span id="secondFive"> </span> <br>
+            MutationEvents HTMLEvents Range Traversal LS :<span id="thirdFive"> </span> <br>
+            LS-Async Validation : <span id="lastTwo"> </span> <br>
+        </p>
+        <script>
+        document.getElementById("firstFive").innerHTML=document.implementation.hasFeature("Core").toString() 
+            +" "+document.implementation.hasFeature("XML").toString()+" "
+            +document.implementation.hasFeature("HTML").toString()+" "
+            +document.implementation.hasFeature("Views").toString()+" "
+            +document.implementation.hasFeature("StyleSheets").toString()+" ";
+        document.getElementById("secondFive").innerHTML=document.implementation.hasFeature("CSS").toString() 
+            +" "+document.implementation.hasFeature("CSS2").toString()+" "
+            +document.implementation.hasFeature("Events").toString()+" "
+            +document.implementation.hasFeature("UIEvents").toString()+" "
+            +document.implementation.hasFeature("MouseEvents").toString()+" ";
+        document.getElementById("thirdFive").innerHTML=document.implementation.hasFeature("MutationEvents").toString() 
+            +" "+document.implementation.hasFeature("HTMLEvents").toString()+" "
+            +document.implementation.hasFeature("Range").toString()+" "
+            +document.implementation.hasFeature("Traversal").toString()+" "
+            +document.implementation.hasFeature("LS").toString()+" ";
+        document.getElementById("lastTwo").innerHTML=document.implementation.hasFeature("LS-Async").toString() 
+            +" "+document.implementation.hasFeature("Validation").toString();
+        </script>
+        <p>
+            写：
+            <span class="atn"> 天啦噜，竟然可以直接用script插入HTML内容，不用getElement然后替换其中的innerHTML了！！！ </span> <br>
+            <script>
+                var time = 22-(new Date()).toString().slice(8,10);
+                document.write("距离开学还有<span class=\"keysentence\"> " + time+ " </span> 天。");
+            </script>
+        </p>
+
+        <hr /> <span class="keyword"> 
+        3 Element类型 :: </span> <br>
+        提供了对元素标签名、子节点及特性的访问。
+        <hr />
+
+        <div id="myDiv" class="bd" title="Body text" lang="en" dir="ltr" selfattr="hhh"
+        style="border:2px solid rgb(4, 108, 245);height:20px;" onclick="shoWords()"></div>
+        <p>
+            HTML元素：<br>
+            <span id="htmlAttriShow"> </span> <br>
+            <script>
+                function getHereAttri(){
+                    var div = document.getElementById("myDiv");
+                    document.getElementById("htmlAttriShow").innerHTML = 
+                    "【Div.id: "+ div.id +"】 【Div.class: "+ div.className +"】 【Div.title: "+ div.title +
+                    "】 【Div.lang: "+ div.lang +"】 【Div.dir: "+ div.dir+"】 【Div.selfattr: "+ div.selfattr 
+                    + "（无法显示自定义属性）" +"】 【Div.style: "+ div.style +"】 【Div.onclick:"+
+                    div.onclick+"】";
+                    // 注意在JS中使用div.className来表示HTML元素的class。因为JS中的class是保留字。
+                }
+                getHereAttri();
+            </script>
+        </p>
+        <p>
+            获取属性： <br>
+            <span id="htmlAttriShow2"> </span> <br>
+            <script>
+                function getHereAttri2(){
+                    var div = document.getElementById("myDiv");
+                    document.getElementById("htmlAttriShow2").innerHTML = 
+                    "【Div.id: "+ div.getAttribute("id") +"】  【Div.class: "+ div.getAttribute("class") 
+                    +"】  【Div.title: "+ div.getAttribute("title") + "】  【Div.lang: "+ div.getAttribute("lang") 
+                    +"【Div.dir: "+ div.getAttribute("dir")+"】  【Div.selfattr: "+ div.getAttribute("selfattr")
+                    +"】  【Div.style: "+ div.getAttribute("style")+"】 【Div.onclick:"+ div.getAttribute("onclick")
+                    +"】";
+                    // 这里使用的是 getAttribute  方法来得到属性，于是用 div.getAttribute("class")
+                    // 获取自定义的属性必须通过这种方法！！！
+                }
+                getHereAttri2();
+            </script>
+        </p>
+        <p>
+            改变属性：<br>
+            也有2种方法：一是直接通过属性，二是通过setAttribute方法。<br>
+            删除/添加属性：<br>
+            removeAttribute/setAttribute<br>
+        </p>
+        <p>
+            attributes 属性（
+        <span class="keyword">Attr类型 </span> ） —— 第3种 获取/改变 属性的方法 ：<br>
+            第2种 删除 属性的方法：removeNamedItem <br>
+            <span class="atn"> attributes属性一般用于元素属性的遍历：</span><br>
+            <span id="htmlAttriShow3"> </span> <br>
+            <script>
+                function outputAttributes(element){
+                    var pairs = new Array(),
+                        attrName,
+                        attrValue,
+                        i,
+                        len;
+                    for (i=0, len=element.attributes.length; i < len; i++){
+                        attrName = element.attributes[i].nodeName;
+                        attrValue = element.attributes[i].nodeValue;
+                        if (element.attributes[i].specified) {
+                            pairs.push(attrName + "=\"" + attrValue + "\"");
+                        }
+                    }
+                    return pairs.join("】 【");
+                }
+                var id = document.getElementById("myDiv").attributes.getNamedItem("id").nodeValue;
+                var id = document.getElementById("myDiv").attributes["id"].nodeValue;
+                document.getElementById("htmlAttriShow3").innerHTML ="【"+ outputAttributes(document.getElementById("myDiv"))+"】";
+            </script>
+        </p>
+        <p>
+            <span class="atn"> 一般情况下，第1种方法 > 第2种方法 > 第3种方法.</span>
+        </p>
+
+        <hr /> <span class="keyword"> 
+        4 Text类型 :: </span> <br>
+        文本节点由 Text 类型表示，包含的是可以照字面解释的纯文本内容。
+        <hr />
+
+        <!-- 没有内容，也就没有文本节点 --> 
+        <div></div>
+        <!-- 有空格，因而有一个文本节点 --> 
+        <div> </div>
+        <!-- 
+            有内容，因而有一个文本节点 
+            开始与结束标签之间只要 存在内容，就会创建一个文本节点
+        --> 
+        <div>Hello World!</div>
+        <p>
+            之所以需要有text类型的节点，是因为位于首、尾标签之间的内容都是归textnode类型管的。 <br>
+            textnode的添加见前面。<br>
+            同一元素可以有多个textnode，于是可以通过normalize()合并成一个textnode。<br>
+            而一个textnode可以通过splitText()分割成多个。分割文本节点是从文本节点中提取数据的一种常用 DOM 解析技术。
+        </p>
+
+        <hr /> <span class="keyword"> 
+        5 Comment类型 :: </span> <br>
+        注释在 DOM 中是通过 Comment 类型来表示的。
+        <hr />
+        
+        <div id="myDiv"><!--A comment --></div> 
+        位于首尾div标签内的注释内容，则该注释节点是&ltdiv&gt元素的一个子节点。<br>
+        于是我们可以更加深入地来理解HTML元素中父子关系。
+        <span class="atn">只要首尾标签内有内容，则该内容，注释也好，文本也好也是属于子代。而且 必定是第一个孩子。</span> <br>
+        另外，注释如果放在了html标签之外，则无法通过JS访问到。
+        
+        <hr /> <span class="keyword"> 
+        6 DOM之动态script技术 :: </span> <br>
+        动态脚本指的是，在页面加载时不存在，但是在将来通过修改DOM动态添加的脚本。
+        <hr />
+
+        url:<input id="scriptUrl" type="text">
+        <button type="button" onclick="loadTheScript()">加载此script</button>
+        <br><span id="resultOfLoadScript"></span><br>
+        遗憾的是暂时不知道是否添加成功。
+        
+        <hr /> <span class="keyword"> 
+        7 DOM之动态CSS技术 :: </span> <br>
+        link标签用于包含来自外部的文件， 而style标签用于指定嵌入的样式。
+        <hr />
+
+        url:<input id="cssUrl" type="text">
+        <button type="button" onclick="loadTheCSS()">加载此CSS</button>
+        
+        <hr /> <span class="keyword"> 
+        8 DOM之操作表格 </span> <br>
+        使用核心 DOM 方法创建和修改表格往往都免不了要编写大量的代码。
+        <hr />
+
+        <table border="5" width="70%">
+                <tbody>
+                    <th>x</th>
+                    <th>y</th>
+                    <tr>
+                        <td>Cell 1,1</td>
+                        <td>Cell 2,1</td>
+                    </tr>
+                    <tr>
+                        <td>Cell 1,2</td>
+                        <td>Cell 2,2</td>
+                    </tr>
+                </tbody>
+        </table>
+        <button type="button" onclick="createATable()">复制一个此表格</button>
+        <p id="copyTable"></p>
+
+        <hr /> <span class="keyword"> 
+        9 DOM之深入理解 </span> <br>
+        理解 NodeList 及其“近亲”NamedNodeMap 和 HTMLCollection，是从整体上透彻理解 DOM 的关键所在。
+        <hr />
+
+        关键所在就是这三兄弟都是动态实时更新的。这就意味着每次访问 NodeList 对象，都会运行一次查询。
+        DOM操作往往是JS程序中最耗时的部分。
+        
+        <hr /> <span class="keyword"> 
+        10 DOM之扩展 </span> <br>
+        Selectors API（提高元素筛选效率）、Element Traversal（此处未涉及）、HTML5（此处未涉及）。
+        <hr />
+        <pre>通过CSS的方式来筛选：
+            //取得 body 元素
+            var body = document.querySelector("body");
+            //取得 ID 为"myDiv"的元素
+            var myDiv = document.querySelector("#myDiv");
+            //取得类为"selected"的第一个元素
+            var selected = document.querySelector(".selected");
+            //取得类为"button"的第一个图像元素
+            var img = document.body.querySelector("img.button");
+        </pre>
+        <script>
+            //取得 body 元素
+            var body = document.querySelector("body");
+            //取得 ID 为"myDiv"的元素
+            var myDiv = document.querySelector("#myDiv");
+            //取得类为"selected"的第一个元素
+            var selected = document.querySelector(".selected");
+            //取得类为"button"的第一个图像元素
+            var img = document.body.querySelector("img.button");
+        </script>
+
+        <hr /> <span class="keyword"> 
+        11 DOM2 and DOM3 </span> <br>
+        DOM1级主要是定义XML和HTML的底层结构，DOM2和DOM3则在此基础上引入了更多的交互。
+        <hr />
+        <p id="domFeatures">
+            
+        </p>
+        <script>
+            var supportsDOM2Core = document.implementation.hasFeature("Core", "2.0"); 
+            var supportsDOM3Core = document.implementation.hasFeature("Core", "3.0"); 
+            var supportsDOM2HTML = document.implementation.hasFeature("HTML", "2.0"); 
+            var supportsDOM2Views = document.implementation.hasFeature("Views", "2.0");
+            var supportsDOM2XML = document.implementation.hasFeature("XML", "2.0");
+            document.getElementById("domFeatures").innerHTML = 
+            "supports DOM2 Core : "+supportsDOM2Core+"<br>"+
+            "supports DOM3 Core : "+supportsDOM3Core+"<br>"+
+            "supports DOM2 HTML : "+supportsDOM2HTML+"<br>"+
+            "supports DOM2 Views : "+supportsDOM2Views+"<br>"+
+            "supports DOM2 XML : "+supportsDOM2XML+"<br>";
+        </script>
+
+
+        <hr /> <span class="keyword"> 
+        其他内容（暂时未整理） </span> <br>
+        Cookies, 响应处理, 输入检测, JSON处理。
+        <hr />
+
+
+        Cookies:
+        <p>
+            <p id="cook"></p>
+            <button type="button" onclick="clearcookie()" >Clear Cookie</button>
+        </p>
+        <script>
+            var c = document.cookie.split(";");
+            document.getElementById("cook").innerHTML = c;
+        </script>
+
+        <hr> 
+        响应处理：
+
+        <div class="textCenter">
+            <p> 点击💡试试？？</p>
+            <img id="myimage" onclick="changeImage()" 
+            src="res/pic_bulboff.gif" width="100" height="180">
+        </div>
+        <p>
+            <div onmouseover="mOver(this)" onmouseout="mOut(this)" onmousedown="mDown(this)" onmouseup="mUp(this)" style="background-color:rgb(98, 72, 139);width:150px;height:20px;padding:40px;">
+                Mouse Over Me pls
+            </div>
+        </p>
+        <p id="p">
+            添加事件的第三种方法：addEventListener。（你可以向任何 DOM 对象添加事件监听，不仅仅是 HTML 元素。如： window 对象。）
+        </p>
+        <input type="text" id="event">click
+        <input type="text" id="actionfunction">function(){document.getElementById('p').style.color='#00ff00'}
+        <p>
+            <button type="button" onclick="addEL()">addEventListener</button>
+            <button type="button" onclick="removeEL()">removeEventListener</button>
+            <button type="button" onclick="addWA()">addWindowAction</button>
+        </p>
+        
+
+        <hr />
+        输入检测：
+        <p id="notes" onmouseover="turnblue()" onmouseout="turnblack()">请输入数字。如果不是数字会弹出提示框。
+        </p>
+            <button type="button" onclick="detect1()" onkeydown="downshow()">点击这里并按下键盘试试</button>
+        <p>
+            <form name="myForm" onsubmit="return validateForm()" method="post">
+                名字(form): 
+                <input type="text" name="fname">
+                <input type="submit" value="提交">
+            </form>
+        </p>
+        <p> 如果输入的数字小于100 或大于300，会提示错误信息。
+            <input id="id1" type="number" min="100" max="300" required>
+            <button onclick="validateNumber()">验证</button>
+            <p id="de"></p>
+        </p>
+        <p>
+            输入你的名字: <input type="text" id="fname" onchange="toUpper()">
+            <p>当你离开输入框后，函数将被触发，将小写字母转为大写字母。</p>
+        </p>
+
+        <hr />
+        JSON处理：
+        <form name="form_json" onsubmit="return validateForm()" method="post">
+            JSON: 
+            <input type="text" name="text_json">
+            <button type="button" onclick="jsonParse()">PRESS ME</button>
+        </form>
+        <p id="p_json"></p>
+
+        <hr />
+        改变 HTML 属性：
+        <div class="textCenter"> 
+            <p>( 点击图片试试？) <br>
+                <img id="imageLeon" src="res/19001.jpg" 
+                width="400px" height="240px" onclick="changePic1900()">
+            </p>
+        </div>
+        <p>
+            在后面的script修改/添加了onclick属性<br>
+            <button type="button" id="myBtn">试试</button>
+        </p>
+        <script>
+            document.getElementById("myBtn").onclick=function(){document.getElementById("myBtn").innerHTML="onclick added, 但是这段代码得放在按钮HTML的后面哦"};
+        </script>
+
+        <hr />
+        改变 CSS 样式：
+        <p id="changecss" onclick="turnred()">
+            （ 点击文字试试？）<br>
+            2019年1月5日，终于写完开题报告了....
+        </p>
+        <p>
+            输入RGB试试？比如00ff00:
+            <input id="text1" type="text">
+            <button type="button" onclick="changeTitleStyle()">改变标题颜色</button>
+        </p>
+
+        <hr />
+        <h2> 本网页元素查询：<h2>
+        <input type="text" id="text_getbyid">
+        <button type="button" onclick="getbyid()">getElementById</button>
+        <p id="p_getbyid"></p>
+        <input type="text" id="text_getbytagname">
+        <button type="button" onclick="getbytagname()">getElementsByTagName</button>
+        <p id="p_getbytagname"></p>
+        <input type="text" id="text_getbyclassname">
+        <button type="button" onclick="getbyclassname()">getElementsByClassName</button>
+        <p id="p_getbyclassname"></p>
+
+        <hr />
+        <hr />
+
+        <p><a href="https://github.com/treasersimplifies" target="_blank">The End</a></p>
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+h1{
+    font-size:30px;
+    color:#930;
+    text-align:center;
+    letter-spacing:2px;
+    word-spacing:10px;
+}
+h2{
+    color:rgb(71, 4, 116);
+}
+div{
+    margin:0 auto;
+    max-width:960px;
+    width:100%;
+}
+body{
+    /* color:rgb(16, 16, 129); */
+    background-color: rgb(255, 255, 255);
+}
+
+/******** System Configuration ******
+***********************************/
+.keyword{
+    color: rgb(199, 9, 174);
+    font-size: 20px;
+}
+.keysentence{
+    color: rgb(28, 102, 240);
+    font-size: 17px;
+    font-weight: bold;
+}
+.atn{
+    color: rgb(243, 101, 6);
+    font-size: 15px;
+    font-weight: bold;
+    /* 或者使用font: "宋体"，15px, bold 缩写*/
+}
+.textCenter{
+    /* 针对块级元素中的文字的居中 */
+    /* !!! 无法实现某元素在其父容器中居中！！！ */
+    text-align:center;
+}
+.blockCenter{
+    width:1000px;
+    margin: auto;
+    border:2px rgb(55, 35, 231) dotted;
+}
+.indent{
+    text-indent:2em;/*首行缩进*/
+}
