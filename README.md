@@ -1,7 +1,8 @@
 # TeaLib
 
 Feel free to use these files for learning or demo usage.
-file or sub-directory |  statements
+
+file or sub-directory | statements
 ------------- | -------------
 `staticWebPageTemplate`  | An all-in-one static(without using JavaScript) web page project.
 `ecmaLearn.js`           | An all-in-one EcmaScript file.
