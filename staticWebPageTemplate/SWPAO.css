@@ -1,0 +1,313 @@
+/* Cascading Style Sheets:格式与排版 */
+/* CSS有三种：内联式、嵌入式和外部式*/
+/* 掌握常用的CSS属性和值：
+文字样式：使用span */
+/* 掌握CSS的布局能力:
+段落对齐：使用div, p等块状元素
+
+*/
+
+/* 本网页的一般设置 */
+h1, .textCenter{
+    /* 针对块级元素中的文字的居中 */
+    /* !!! 无法实现某元素在其父容器中居中！！！ */
+    text-align:center;
+}
+.blockCenter{
+    width:1000px;
+    margin: auto;
+    border:2px rgb(55, 35, 231) dotted;
+}
+.indent{
+    text-indent:2em;/*首行缩进*/
+}
+#end{
+    height:40px;
+    text-align: center;
+    border:2px rgb(8, 1, 17) solid;
+}
+.atn{
+    color: rgb(243, 101, 6);
+    font-size: 15px;
+    font-weight: bold;
+    /* 或者使用font: "宋体"，15px, bold 缩写*/
+}
+#unordered_list{
+    width:500px;
+    margin: auto;
+}
+#ordered_list{
+    width:500px;
+    margin: auto;
+}
+/***********************
+************************/
+
+/* 标签选择器 */
+table tr td,th{
+    border:1px solid #000;
+}
+table{
+    margin:auto;
+}
+/* 类选择器 */
+.keyword{
+    color: rgb(199, 9, 174);
+    font-size: 20px;
+}
+
+.hh1{/* 重要性 */
+    font-size: 32px !important;
+}
+/* ID选择器 子选择器 */
+#unordered_list>ul>li{
+    border:1px solid black;
+    width:400px;
+    text-align: center;
+}
+/* 后代选择器 */
+#ordered_list ul{
+    border:1px solid black;
+    width:400px;
+    text-align: center;
+}
+/* *是通用选择器，选中HTML中的所有元素 */
+/* 伪选择符 */
+a:hover{color:rgb(0, 238, 255);}
+table:hover{color:rgb(0, 255, 136);}
+h1:hover{color:red;}
+/* CSS的一些性质：
+继承性：子标签样式默认与父标签同
+特殊性：同标签多样式，按优先级
+    继承：0.1，
+    标签：1，
+    类：10，
+    ID：100.
+层叠：如果多样式优先级同，则后
+重要性：手动设置某样式为最重要
+*/
+
+/* CSS文字样式： */
+#songti{
+    font-family: "宋体";
+}
+#yahei{
+    font-family: "Microsoft Yahei";
+}
+#px10{
+    font-size: 10px;
+}
+#px20{
+    font-size: 20px;
+}
+#px30{
+    font-size: 30px;
+}
+#rr{
+    color:red;
+}
+#gg{
+    color:green;
+}
+#bb{
+    color:blue;
+}
+#bold{
+    font-weight:bold;
+}
+#italic{
+    font-style:italic;
+}
+#underline{
+    text-decoration:underline;
+}
+#deleteline{
+    text-decoration:line-through;
+}
+
+/* CSS段落格式 */
+#para{
+    text-indent:2em;/*首行缩进*/
+    line-height:2em;/*行间距(行高)*/
+}
+#space{
+    letter-spacing:10px;/*字母间距*/
+    word-spacing:10px;/*汉字间距*/
+}
+#center{
+    text-align:center;
+}
+
+/* CSS盒模型 */
+/* 块级元素特点：
+1、独占一行
+2、高度、宽度、行高、顶和底边距都可设置
+3、宽度默认占父元素100%
+*/
+
+/* 将内联元素转化为块级元素 */
+a{
+    display:block;
+    text-align:center;
+}
+
+/* 内联元素特点：
+1、和其他元素都在一行上；
+2、高度、宽度及顶部和底部边距不可设置；
+3、宽度就是它包含的文字或图片的宽度，不可改变。 */
+/* display:inline; */
+
+/* 内联-块状元素特点：
+1、和其他元素都在一行上；
+2、高度、宽度、行高以及顶和底边距都可设置。 */
+
+/*块级元素/盒子模型一些重要的关键词：
+  |margin|border|padding|content width| p |b| m | 
+    top/bottom/left/right
+*/
+
+#borderShow{
+    text-indent:2em;
+    
+    width:1000px;
+    
+    padding:10px 20px 30px 20px;/* t r b l */
+    
+    /* border-width:2px;
+    border-style:solid;
+    border-color:red; */
+    border-top:2px dashed rgb(60, 14, 187);
+    border-bottom: 2px dotted rgb(240, 1, 1);
+    border-left: 4px solid rgb(101, 105, 104);
+    border-right: 4px solid rgb(224, 119, 33);
+    
+    margin:30px auto;
+    /* height:50px; */
+}
+
+/* CSS布局模型
+先来说一说流动模型，流动（Flow）是默认的网页布局模式。也就是说网页在默认状态下的 HTML 网页元素都是根据流动模型来分布网页内容的。
+流动布局模型具有2个比较典型的特征：
+第一点，块状元素都会在所处的包含元素内自上而下按顺序垂直延伸分布，因为在默认状态下，块状元素的宽度都为100%。实际上，块状元素都会以行的形式占据位置。如右侧代码编辑器中三个块状元素标签(div，h1，p)宽度显示为100%。
+第二点，在流动模型下，内联元素都会在所处的包含元素内从左到右水平分布显示。（内联元素可不像块状元素这么霸道独占一行）
+*/
+#BOX{
+    height:650px;/* 不加这句会造成后面的元素错乱... */
+    border:2px rgb(8, 1, 17) solid;
+}
+#BOX1, #BOX2, #BOX3, #BOX4{
+    border:2px rgb(8, 1, 17) solid;
+    width:450px;
+    height:600px;
+    float:left;
+}
+#BOX2,#BOX4{
+    width:230px;
+}
+#box11,#box12,#box13,#box14{
+    text-align: center;
+    border:2px rgb(8, 1, 17) solid;
+    width:40px;
+    height:40px;
+}
+#box21,#box22{
+    text-align: center;
+    border:2px rgb(8, 1, 17) solid;
+    width:40px;
+    height:40px;
+    float:left;
+}
+#box23,#box24{
+    text-align: center;
+    border:2px rgb(8, 1, 17) solid;
+    width:40px;
+    height:40px;
+    float:right;
+}
+#box31,#box32,#box33,#box34{
+    text-align: center;
+    border:2px rgb(8, 1, 17) solid;
+    width:140px;
+    height:270px;
+    float:left;
+}
+#box311{
+    border:2px rgb(8, 1, 17) solid;
+    width:200px;
+    height:160px;
+    position:absolute;
+    right:10px;
+    top:5px;
+}
+#box321{
+    text-align: center;
+    border:2px rgb(8, 1, 17) dotted;
+    width:160px;
+    height:150px;
+    position: relative;
+}
+#box322{
+    text-align: center;
+    border:2px rgb(175, 101, 5) dotted;
+    width:160px;
+    height:150px;
+    position: relative;
+    left:10px;
+    top:20px;
+}
+#box331{
+    width:120px;
+    height:150px;
+    border:2px rgb(0, 140, 255) solid;
+    position:fixed;
+    right:50px;
+    top:250px;
+}
+
+/* relative 与 absolute组合使用
+1、参照定位的元素必须是相对定位元素的前辈元素：
+2、参照定位的元素必须加入position:relative;
+3、定位元素加入position:absolute，便可以使用top、bottom、left、right来进行偏移定位了。
+*/
+#box41{
+    text-align: center;
+    width:210px;
+    height:200px;
+    position:relative;
+    border:2px rgb(0, 140, 255) solid;
+    left:10px;  
+}
+#box411{
+    width:90%;
+ 	position: absolute;
+    left:5%;
+    bottom:0px;
+    border:2px rgb(30, 255, 0) solid;	
+}
+
+#summary{
+    width:1000px;
+    border:2px rgb(0, 140, 255) solid;
+    margin: auto;
+}
+#summaryList{
+    /* text-align: center; */
+    border:2px rgb(81, 175, 252) solid;
+    width: 70%;
+    margin: auto;
+    
+}
+
+#verticalParent{
+    width:200px;
+    height:200px;
+    border:2px rgb(81, 175, 252) solid;
+    margin: auto;
+    vertical-align: middle;
+}
+#verticalCenter{
+    width:100px;
+    height:100px;
+    border:2px rgb(81, 175, 252) solid;
+    margin: 25% auto;
+}

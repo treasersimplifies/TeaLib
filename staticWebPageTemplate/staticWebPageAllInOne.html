@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- 注释/comments：head中可用的标签有：title，meta，link，style，script -->
+    <!-- meta标签用来描述一个HTML网页文档的属性，例如作者、日期和时间、网页描述、关键词、页面刷新等： -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>A Template of Static Web Page</title>
+    <link href="SWPAO.css" rel="stylesheet" type="text/css" />
+    <style>
+        /* 这里使用了嵌入式CSS */
+        body{
+        /* 字体 */
+        font-family: "STFangsong";
+        }
+    </style>
+</head>
+<body>
+    <h1>一级标题:<span class="keyword hh1">双重类h1</span>(h1-h6)</h1>
+    <p class="atn">ATNS: HTML标签不区分大小写，h1和H1是一样的，但建议小写，因为大部分程序员都以小写为准。</p>
+    <h3>(三级标题:h3)时刻记住：<br/>
+        1. HTML是网页内容的载体。内容就是网页制作者放在页面上想要让用户浏览的信息，可以包含文字、图片、视频等。（br/标签：换行）<br/>
+        2. CSS样式是表现。就像网页的外衣。比如，标题字体、颜色变化，或为标题加入背景图片、边框等。所有这些用来改变内容外观的东西称之为表现。（换行标签br/）<br/>
+        3. JavaScript是用来实现网页上的特效效果。如：鼠标滑过弹出下拉菜单。或鼠标滑过表格的背景颜色改变。还有焦点新闻（新闻图片）的轮换。可以这么理解，有动画的，有交互的一般都是用JavaScript来实现的。
+    </h3>
+
+    <hr/>
+
+    <p>
+        <strong><span class="keyword">strong</span>标签</strong>&nbsp&nbsp&nbsp
+        <em><span class="keyword">em</span>标签</em>&nbsp&nbsp&nbsp
+        <span style="color:brown;font-size:24px">
+            <span class="keyword">span</span>标签：只是为了文字的样式，
+            这里使用了<span class="keyword">内联式CSS</span>.
+        </span>&nbsp&nbsp&nbsp
+        <q><span class="keyword">q</span>标签：自引用</q>
+        <blockquote><span class="keyword">blockquote</span>标签：这是一个真的真的真的真的真的真的非常非常非常非常非常非常非常非常长的、不带引号的长引用。</blockquote> 
+        <span class="keyword">hr/</span>标签：横线<hr/>
+    </p>
+    <p>
+        <div class="textCenter"> <code>
+            <span class="keyword">code</span>标签：单行代码. size_t a = b &lt c? d : e; 
+        </div></code>
+        <!-- <pre> 标签不只是为显示计算机的源代码时用的，在你需要在网页中预显示格式时都可以使用它，
+            只是<pre>标签的一个常见应用就是用来展示计算机的源代码。 -->
+        
+        <pre>
+            <div class="textCenter">
+                <span class="keyword">pre</span>标签：多行代码（会自动换行，也可以用span自己设计一个用来显示代码的格式）: 
+            </div>
+            <div class="blockCenter">
+            int main (){
+                fp = fopen ("MathPic.ppm","wb");
+                fprintf (fp, "P6\n%d %d\n255\n", DIM, DIM);
+                for(int j=0;j&ltDIM;j++)
+                    for(int i=0;i&ltDIM;i++)
+                        pixel_write (i,j);
+                fclose (fp);
+                return 0;
+            }
+            void pixel_write (int i, int j){
+                static unsigned char color[3];
+                color[0] = RD (i,j)&255;
+                color[1] = GR (i,j)&255;
+                color[2] = BL (i,j)&255;
+                fwrite (color, 1, 3, fp);
+            }
+            </div>
+        </pre>
+    </p>
+
+    <hr/>
+
+    <span class="keyword">div</span>标签：逻辑划分、容器
+    <div id = "unordered_list"> 
+        <ul>
+            <span class="keyword">ul</span>标签：无序列表：
+            <li>li标签：列表项1</li>
+            <li>li标签：列表项2</li>
+            <li>li标签：列表项3</li>
+            <li>li标签：列表项4</li>
+        </ul>
+    </div>
+    <div id = "ordered_list">
+        <ol>
+            <span class="keyword">ol</span>标签：有序列表：
+            <li>li标签：列表项1</li>
+                <ul>
+                    <li>子列表：子列表项1</li>
+                    <li>子列表：子列表项2</li>
+                    <li>子列表：子列表项3</li>
+                </ul>
+            <li>li标签：列表项2</li>
+            <li>li标签：列表项3</li>
+            <li>li标签：列表项4</li>
+        </ol>
+    </div>
+
+    <hr/>
+
+    <table><span class="keyword">tbody</span>标签：表格
+        <caption>caption标签：表格标题</caption>
+        <tbody>tbody标签：表格体
+            <tr>tr标签：表格行
+                <th>th标签：表头. x</th>
+                <th>th标签：表头. y</th>
+                <th>th标签：表头. z</th>
+            </tr>
+            <tr>
+                <td>td标签：单元格</td>
+                <td>td标签：单元格</td>
+                <td>td标签：单元格</td>
+            </tr>
+            <tr>
+                <td>td标签：单元格</td>
+                <td>td标签：单元格</td>
+                <td>td标签：单元格</td>  
+            </tr>
+            <tr>
+                <td>td标签：单元格</td>
+                <td>td标签：单元格</td>
+                <td>td标签：单元格</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <a  href="目标网址" target="_blank" title="？？"><span class="keyword">a</span>标签：可点击链接. 链接显示的文本（target属性指示在新建标签页中打开）</a>
+    <a href="mailto:treaserlou@zju.edu.cn?subject=对此网页练习的建议&body=你好，对此网页有些想法">mailto属性：对此网页练习有何感想，发送邮件给我</a>
+   
+    <hr/>
+
+    <span class="keyword">img</span>标签：图片
+    <!-- 图像可以是GIF，PNG，JPEG格式的图像文件。 -->
+    <p>
+        <div class="textCenter"> <img src="http://img.mukewang.com/52da54ed0001ecfa04120172.jpg" 
+        alt="下载失败时的替换文本：天啦噜，图片被ISP吃掉了" title = "提示文本？？是啥？">
+        </div>
+    </p>
+
+    <hr/>
+
+    <!-- Input to Server -->
+    <form method="传送方式post/get" action="服务器文件"><span class="keyword">form</span>标签：所有表单控件（文本框、文本域、按钮、单选框、复选框等）都必须放在 form /form 标签之间（否则用户输入的信息可提交不到服务器上哦！）。<br/>
+        <p class="textCenter">
+            <label for="username">用户名:(<span class="keyword">label</span>标签)</label>
+            <input type="text"  name="username" id="username" value="这是一个input标签" /> <br/>
+            <label for="pass">密码:(label标签)</label>
+                <input type="password"  name="pass" id="pass" value="" />    <br/>
+
+            <input type="submit" value="submit类型input"  name="submit" />
+            <input type="reset" value="reset类型input" name="reset" />    <br/>
+        </p>
+
+        <div class="textCenter" style="border-top:2px dashed rgb(60, 14, 187);"> 
+            <span class="keyword">textarea</span>标签：<br/>
+            <textarea cols="50" rows="10">文本域.</textarea><br/>
+        </div>
+
+        <p class="textCenter" style="border-top:2px dashed rgb(60, 14, 187);">
+            <label>radio类型<span class="keyword">input</span>:单选框.</label>
+            <input type="radio" value="1"  name="gender" />男
+            <input type="radio" value="2"  name="gender" />女 <br>
+        </p>
+        
+        <p class="textCenter" >
+            <label>checkbox类型input:复选框.</label>
+            <input type="checkbox" value="1"  name="lang" checked="checked"/>中文
+            <input type="checkbox" value="2"  name="lang" />English
+            <input type="checkbox" value="3"  name="lang" />JavaScript <br>
+        </p>
+        
+        <p class="textCenter" style="border-top:2px dashed rgb(60, 14, 187);">
+            <label><span class="keyword">select</span>标签+<span class="keyword">option</span>标签:下拉列表框（multiple属性不用，用了就是多个下拉选择）</label>
+            <select >
+                <option value="看书">遨游知识海洋（看书）</option>
+                <option value="旅游" selected="selected">品味电影艺术（看片）</option>
+                <option value="运动">活动全身筋骨（运动）</option>
+                <option value="购物">撰写程序文章（编程）</option>
+            </select>
+            <input type="submit" value="确定"  name="submit" />
+            <input type="reset" value="重置" name="reset" />    <br>
+        </p>
+        
+        <p class="textCenter" style="border-top:2px dashed rgb(60, 14, 187);">
+            <label>label的for属性：点击文字就可选中选框.</label><br>
+            <label for="Inception">Inception</label>
+                <input type="checkbox" value="1" id="Inception"/><br>
+            <label for="Insterllation">Insterllation</label>
+                <input type="checkbox" value="1" id="Insterllation"/><br>
+            <label for="Dark_Knight">Dark Knight</label>
+                <input type="checkbox" value="1" id="Dark_Knight"/><br>
+            <input type="submit" value="确定"  name="submit" />
+            <input type="reset" value="重置" name="reset" />    <br>
+        </p>
+    </form>
+
+    <hr/>
+
+    <span class="keyword">CSS文字样式演示</span><br>
+    <p class="blockCenter">
+        字体：<span id="songti">宋体</span>&nbsp&nbsp&nbsp<span id="yahei">微软雅黑</span> <br>
+        字号：<span id="px10">10px</span> &nbsp&nbsp&nbsp <span id="px20">20px</span> &nbsp&nbsp&nbsp <span id="px30">30px</span> <br>
+        颜色：<span id="rr">Red</span> &nbsp&nbsp&nbsp <span id="gg">Green</span> &nbsp&nbsp&nbsp <span id="bb">Blue</span> <br>
+        粗斜：<span id="bold">粗体</span> &nbsp&nbsp&nbsp <span id="italic">斜体</span> <br>
+        下划线：<span id="underline">下划线</span> &nbsp&nbsp&nbsp 删除线：<span id="deleteline">删除线</span> <br>
+    </p>
+    <span class="keyword">CSS段落格式演示</span><br>
+    <p id="para">
+        首行缩进。2em是2倍字体大小的意思。<br>
+        第二行：行间距为2em。<br>
+        <span id="space"> 汉字间距是50px，字母abcde间距也是50px。</span> <br>
+        <div id="center"> 为块状元素(div、p、h1等)的文字设置居中。<span style="color:blueviolet">将CSS文件中的开头部分解除注释就可以将本网页中合适的元素都设置为居中。</span></div>
+    </p>
+
+    <hr/>
+    
+    <span class="keyword">CSS盒模型</span>
+    <p>元素分类:
+        <p id="complexContent"></p>
+        <script>
+            strshow = " 常用的块状元素有："+"\n"+
+            "<div>、<p>、<h1>...<h6>、<ol>、<ul>、<dl>、<table>、<address>、<blockquote> 、<form>"+"\n"+
+            "常用的内联元素有："+"\n"+
+            "<a>、<span>、<br>、<i>、<em>、<strong>、<label>、<q>、<var>、<cite>、<code>"+"\n"+
+            "常用的内联块状元素有："+"\n"+
+            "<img>、<input>";
+            strshow=strshow.replace(/</g,"&lt");
+            strshow=strshow.replace(/>/g,"&gt");
+            strshow=strshow.replace(/\n/g,"<br>");
+            document.getElementById("complexContent").innerHTML=strshow;
+        </script>
+        元素特点: <br>
+        <a>块级元素特点：
+        1、独占一行
+        2、高度、宽度、行高、顶和底边距都可设置
+        3、宽度默认占父元素100%  （这是一个被转化为块级元素的a标签，并被设置为居中）</a>
+        内联元素特点：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        1、和其他元素都在一行上；
+        2、高度、宽度及顶部和底部边距 <strong> 不可设置</strong>；
+        3、宽度就是它包含的文字或图片的宽度，<strong> 不可改变。</strong><br>
+        内联-块状元素特点：
+        1、和其他元素都在一行上；
+        2、高度、宽度、行高以及顶和底边距都可设置。<br>
+        <p class="atn"> ATN: 只有块级元素有盒子模型的特征。</p>
+        
+        <div id="borderShow">
+            这是一段我在大年初三写的示例文字，用来演示<span class="keyword">盒模型块级元素的设置</span>：
+            这是一部裹着科幻外皮，以动作为主，科幻为辅，核心是亲情的自然灾难片。
+            特效确是非常恢弘，和剧情贴合的不错，加上大刘恢弘的小说格局，可以说是非常不错的科幻了。
+            但演员都操着一口京腔听着有点不舒服，关键是台词太弱了，使得人物不是很突出。
+            而且剧情主打的亲情，但是没有把握好表达的火候，看起来让人感觉尴尬。
+            总而言之算是中国科幻开山之作，中国科幻现在的幻已经有了，而科也有一些了。
+            但是科幻要达到更高的高度，要么像星际穿越那样把科做到极致，要么像盗梦空间那样把幻做到极致，要么是像2001太空漫游那样结合哲学、像千钧一发那样结合伦理等其他领域。
+        </div>
+    </p>
+
+    <hr/>
+    
+    <span class="keyword">CSS布局模型</span> <br>
+    <span class="atn"> ATN: width 和 布局left的值可以是%，非常容易对中！ </span> <br>
+    在网页中，元素有三种布局模型：
+    1、流动模型（Flow）
+    2、浮动模型 (Float)
+    3、层模型（Layer）
+    
+    <div id="BOX">
+        <div id="BOX1">
+            <p style="text-align:center"> Flow：默认 </p>
+            <p>
+                流动布局模型具有2个比较典型的特征：<br>
+                第一点，块状元素都会在所处的包含元素内自上而下按顺序垂直延伸分布，因为在默认状态下，块状元素的宽度都为100%。
+                实际上，块状元素都会以行的形式占据位置。如右侧代码编辑器中三个块状元素标签(div，h1，p)宽度显示为100%。<br>
+                第二点，在流动模型下，内联元素都会在所处的包含元素内从左到右水平分布显示。（内联元素可不像块状元素这么霸道独占一行）<br>
+            </p>
+            <div id="box11">box11</div>
+            <div id="box12">box12</div>
+            <div id="box13">box13</div>
+            <div id="box14">box14</div>
+        </div>
+        <div id="BOX2">
+            <p style="text-align:center"> Float</p>
+            <div id="box21">box21</div>
+            <div id="box22">box22</div>
+            <div id="box23">box23</div>
+            <div id="box24">box24</div>
+        </div>
+        <div id="BOX3">
+            <p style="text-align:center">Layer</p>
+            <p class="atn">个人感觉Layer确实有点不太好用，似乎只有relative还可以用用。<br> </p> 
+            <p>
+                CSS定义了一组定位（positioning）属性来支持层布局模型。<br>
+                层模型有三种形式： <br>
+                1、绝对定位(position: absolute) <br>
+                2、相对定位(position: relative) <br>
+                3、固定定位(position: fixed) <br>
+            </p>   
+            <div id="box31">
+                <p> absolute</p>
+                <div id="box311"> <span class="keyword">（Layer.absolute）</span>
+                    使用left、right、top、bottom属性相对于其最接近的一个具有定位属性的父包含块进行绝对定位。
+                    如果不存在这样的包含块，则相对于body元素，即相对于浏览器窗口。
+                </div>
+                <!-- <div id="box312">box312</div>
+                <div id="box313">box313</div> -->
+                <p>见本网页最右上</p>
+            </div>
+            <div id="box32">
+                <p> relative</p>
+                <div id="box321"> 
+                    <span class="keyword">(Layer.relative 0)</span> <br>
+                    相对于以前的位置移动，移动的方向和幅度由left、right、top、bottom属性确定，偏移前的位置保留不动。
+                </div>
+                <div id="box322">
+                    <span class="keyword">(Layer.relative 1)</span> <br>
+                    left:10px;
+                    top:5px; <br>相比原来应该位于的位置偏移的量。
+                </div>
+            </div>
+            <div id="box33">
+                <p> fixed</p>
+                见浮窗
+                <div id="box331">
+                    <span class="keyword">(Layer.fixed)</span> <br>
+                    看上去类似浮窗。所谓fixed，是相对于视图，即网页窗口。
+                </div>
+            </div>
+        </div>
+        <div id="BOX4">
+            <p style="text-align:center">
+                relative与absolute组合
+            </p>
+            <div id="box41">
+                <img src="http://img.mukewang.com/541a7d8a00018cf102000200.jpg">
+                <div id="box411">
+                    <span style="color:rgb(82, 236, 229)"> 当上面照片的人物还是三年级的学生时是一个害羞的小女生。 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr/>
+
+    <div id="summary">
+       其他知识总结： <br>
+       <ul id="summaryList">
+            <li>水平居中
+                <ol>
+                    <li> 文本和图片直接在父元素div中使用text-align: center;</li>
+                    <li> 定宽块状元素如div：margin:auto.（margin-left 与 margin-right 设置为 auto） </li>
+                    <li> 针对不定宽块状元素ol。<span class="atn"> 事实上我发现table、ul都可以使用2的方法居中。</span> 但还是给出原答案：
+                        <ol>
+                            <li>加入 table 标签</li>
+                            <li>设置 display: inline 方法：与第一种类似，显示类型设为 行内元素，进行不定宽元素的属性设置</li>
+                            <li>设置 position:relative 和 left:50%：利用 相对定位 的方式，将元素向左偏移 50% ，即达到居中的目的</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                垂直居中：放到table里只能做到文字的垂直居中。<br>
+                子元素使用<span class="atn">margin: 25% auto;</span> 可以在父元素内垂直居中。
+            </li>
+            <li>
+                颜色、长度，前面已说。
+            </li>
+       </ul>
+       
+        <!-- <table><tbody><tr><td> -->
+            <div id="verticalParent">
+                <div id="verticalCenter">
+                    <div style="margin: 37% auto;">垂直居中</div>
+                </div>
+            </div>
+        <!-- </td></tr></tbody></table> -->
+        
+    </div>
+
+    <hr/>
+
+    <div id="end">  
+        <address>
+            <span class="keyword">address</span>标签：地址.  1600 Pennsylvania Avenue NW, Washington, D.C. 20500.
+        </address>
+    </div>
+
+    
+</body>
+</html>
