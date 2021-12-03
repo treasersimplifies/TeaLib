@@ -304,6 +304,10 @@ console.log("added:",colors2.splice(2,0,"red", "green"),"||left:",colors2);
 console.log("changed:",colors2.splice(2,1,"red", "purple"),"||left:",colors2);//remove 1 item, add 2 items
 
 //Array.iterator:
+// every() 
+// 调用every()并不能改变数组的值，只能检测数组中的每个值是否满足给定的条件。当遍历到某一个值不满足条件时，函数立即返回false，不再继续遍历。当数组中的每一个值都满足给定的条件时，函数返回true。
+// forEach() 
+// 从头到尾的遍历数组，可以改变数组的值。为数组中的每个元素都执行一遍传递给forEach()的回调函数
 console.log("search: red is at",colors2.indexOf("red"),", red is at",colors2.lastIndexOf("red"),"from bottom?");// 2, 2 ???
 var numbers = [1,2,3,4,5,4,3,2,1];
      var everyResult = numbers.every(function(item, index, array){// anonymous
